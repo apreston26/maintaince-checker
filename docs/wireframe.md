@@ -1,3 +1,3 @@
 ## Wireframe diagram
 
-[![Can't load wireframe diagram](img/wireframe.png)](pdf/wireframe.pdf)
+[![Can't load wireframe diagram](img/maintenance-wireframe.png)](pdf/maintenance-wireframe.pdf)
