@@ -1,4 +1,4 @@
-# Maintance Checker
+# Maintenance Checker
 
 ## Introduction
 

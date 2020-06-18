@@ -1,3 +1,3 @@
 ## Entity Relationship Diagram
 
-[![Can't load ERD](img/ERD.png)](pdf/ERD.pdf)
+[![Can't load ERD](img/entity-relationship-database.png)](pdf/entity-relationship-database.pdf)
