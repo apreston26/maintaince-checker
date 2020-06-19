@@ -30,7 +30,8 @@ This app would be designed with the sole intent to keep your car up to date from
     
 ### Device/external services
 
-* Google maps
+* Google maps MAINTENANCE
+* [Car Maintenance App](https://www.carmd.com/api/vehicle-maintenance-carmd-api/)
 * [Yelp API](https://www.yelp.com/developers/documentation/v3/get_started)
 
 ### Stretch goals/possible enhancements 
