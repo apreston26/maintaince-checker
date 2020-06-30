@@ -12,7 +12,7 @@ This app would be designed with the sole intent to keep your car up to date from
 
 * People who want to be sure they have the most reliable service 
 
-    > As someone who has been ripped off by the mechanic before it's important to me that I am going to the most reliable place in town. 
+    > As someone who has been ripped off by the mechanic before it's important to me that I am going to the most reliable place in town so that it does not happen again.
 
 ### Functionality
 
@@ -30,8 +30,10 @@ This app would be designed with the sole intent to keep your car up to date from
     
 ### Device/external services
 
-* Google maps MAINTENANCE
+* Google maps 
+    * This service will be used in order to locate nearby maintenance shops by showing the address and how far away it is from the phone's current location. 
 * [Yelp API](https://www.yelp.com/developers/documentation/v3/get_started)
+    * This will be used to show users reviews of maintenance shops to assist deciding which maintenance shop is the safest decision for them. 
 
 ### Stretch goals/possible enhancements 
 
