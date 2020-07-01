@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import edu.cnm.deepdive.maintaincechecker.R;
 import edu.cnm.deepdive.maintaincechecker.model.dao.MaintenanceDao;
@@ -20,6 +22,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -33,6 +36,7 @@ import org.apache.commons.csv.CSVRecord;
     entities = {Review.class, Mechanic.class, Maintenance.class},
     version = 1
 )
+@TypeConverters({MaintenanceDatabase.Converters.class, Maintenance.Type.class})
 public abstract class MaintenanceDatabase extends RoomDatabase {
 
   private static final String DB_NAME = "maintenance_db";
@@ -95,7 +99,6 @@ public abstract class MaintenanceDatabase extends RoomDatabase {
           List<Maintenance> maintenanceList = map
               .computeIfAbsent(mechanic, (s) -> new LinkedList<>());
           Maintenance maintenance = new Maintenance();
-          maintenance.setText(record.get(1).trim());
           maintenanceList.add(maintenance);
         }
         return map;
@@ -136,6 +139,19 @@ public abstract class MaintenanceDatabase extends RoomDatabase {
                 throw new RuntimeException(throwable);
               }
           );
+    }
+  }
+
+  public static class Converters {
+
+    @TypeConverter
+    public static Long dateToLong(Date value) {
+      return (value != null) ? value.getTime() : null;
+    }
+
+    @TypeConverter
+    public static Date longToDate(Long value) {
+      return (value != null) ? new Date(value) : null;
     }
   }
 }

@@ -5,6 +5,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
 import java.util.Date;
 
 //TODO Make this null
@@ -27,7 +28,7 @@ public class Maintenance {
 
   @NonNull
   @ColumnInfo(name = "type", collate = ColumnInfo.NOCASE)
-  private String text;
+  private Type type;
 
   public long getId() {
     return id;
@@ -54,11 +55,26 @@ public class Maintenance {
   }
 
   @NonNull
-  public String getText() {
-    return text;
+  public Type getType() {
+    return type;
   }
 
-  public void setText(@NonNull String text) {
-    this.text = text;
+  public void setType(@NonNull Type type) {
+    this.type = type;
+  }
+
+  public enum Type {
+    OIL_CHANGE,
+    TIRE_ROTATE;
+
+    @TypeConverter
+    public static Integer typeToInteger(Type value) {
+      return (value != null) ? value.ordinal() : null;
+    }
+
+    @TypeConverter
+    public static Type integerToType(Integer value) {
+      return (value != null) ? Type.values()[value] : null;
+    }
   }
 }

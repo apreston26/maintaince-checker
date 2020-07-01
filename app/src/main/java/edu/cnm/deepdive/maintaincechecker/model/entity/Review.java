@@ -31,6 +31,14 @@ public class Review {
   @ColumnInfo(name = "reputation")
   private int rep;*/
 
+  public long getMechanicId() {
+    return mechanicId;
+  }
+
+  public void setMechanicId(long mechanicId) {
+    this.mechanicId = mechanicId;
+  }
+
   public long getId() {
     return id;
   }

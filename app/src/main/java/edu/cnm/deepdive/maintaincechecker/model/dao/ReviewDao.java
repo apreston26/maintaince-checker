@@ -1,10 +1,12 @@
 package edu.cnm.deepdive.maintaincechecker.model.dao;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Relation;
 import androidx.room.Transaction;
 import androidx.room.Update;
 import edu.cnm.deepdive.maintaincechecker.model.entity.Mechanic;
@@ -14,6 +16,7 @@ import io.reactivex.Single;
 import java.util.Collection;
 import java.util.List;
 
+@Dao
 public interface ReviewDao {
   @Insert(onConflict = OnConflictStrategy.IGNORE)
   Single<Long> insert(Review review);
@@ -30,6 +33,7 @@ public interface ReviewDao {
   @Query("SELECT * FROM Review ORDER BY reviewMsg")
   LiveData<List<Review>> selectAll();
 
+  @Transaction
   @Query("SELECT * FROM Review WHERE mechanic_id = :mechanicId ")
   Single<List<MechanicWithReviews>> selectByMechanicId(Long mechanicId);
 

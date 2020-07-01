@@ -22,6 +22,6 @@ public class MaintenanceType extends Maintenance {
   @Override
   public String toString() {
     String mechanicName = (mechanic != null) ? mechanic.getName() : "No Preference";
-    return String.format("%s%n\u2014%s", getText(), mechanicName);
+    return String.format("%s%n\u2014%s", getType(), mechanicName);
   }
 }
