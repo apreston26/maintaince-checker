@@ -43,4 +43,7 @@ dependencies {
 
 // Stetho (inspection) dependency
     implementation 'com.facebook.stetho:stetho:1.5.1'
+
+    // Apache Commons CSV
+    implementation 'org.apache.commons:commons-csv:1.8'
 }

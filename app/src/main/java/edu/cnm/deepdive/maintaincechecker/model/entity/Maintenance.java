@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.maintaincechecker.model.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -24,8 +25,9 @@ public class Maintenance {
   @ColumnInfo(name = "date")
   private Date date;
 
+  @NonNull
   @ColumnInfo(name = "type", collate = ColumnInfo.NOCASE)
-  private int type; //TODO Make this refer to an enum with a list of things that could require maintenance
+  private String text;
 
   public long getId() {
     return id;
@@ -43,11 +45,20 @@ public class Maintenance {
     this.date = date;
   }
 
-  public int getType() {
-    return type;
+  public long getMechanicId() {
+    return mechanicId;
   }
 
-  public void setType(int type) {
-    this.type = type;
+  public void setMechanicId(long mechanicId) {
+    this.mechanicId = mechanicId;
+  }
+
+  @NonNull
+  public String getText() {
+    return text;
+  }
+
+  public void setText(@NonNull String text) {
+    this.text = text;
   }
 }
