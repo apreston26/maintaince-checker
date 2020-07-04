@@ -5,11 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import edu.cnm.deepdive.maintaincechecker.R;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
-import edu.cnm.deepdive.maintaincechecker.R;
 
 public class SecondFragment extends Fragment {
 

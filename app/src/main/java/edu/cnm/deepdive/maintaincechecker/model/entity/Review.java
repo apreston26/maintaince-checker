@@ -27,9 +27,9 @@ public class Review {
   @ColumnInfo(collate = ColumnInfo.NOCASE)
   private String reviewMsg = "";
 
-  //TODO Update ERD with this column
-  @ColumnInfo(name = "reputation")
-  private double rep;
+//  //TODO Update ERD with this column
+//  @ColumnInfo(name = "reputation")
+//  private double rep;
 
   public long getMechanicId() {
     return mechanicId;
