@@ -29,4 +29,7 @@ public interface MechanicDao {
 
   @Query("SELECT * FROM Mechanic ORDER BY name")
   LiveData<List<Mechanic>> selectAll();
+
+  @Query("SELECT * FROM Mechanic WHERE location = :locationId")
+  LiveData<List<Mechanic>> selectionByLocation(long locationId);
 }

@@ -33,7 +33,6 @@ public interface ReviewDao {
   @Query("SELECT * FROM Review ORDER BY reviewMsg")
   LiveData<List<Review>> selectAll();
 
-  @Transaction
   @Query("SELECT * FROM Review WHERE mechanic_id = :mechanicId ")
   Single<List<MechanicWithReviews>> selectByMechanicId(Long mechanicId);
 

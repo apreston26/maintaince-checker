@@ -20,16 +20,16 @@ public class Review {
   private long id;
 
   //Allows the user to search reviews by mechanic
-  @ColumnInfo(name = "mechanic_id", index = true)
+  @ColumnInfo(name = "mechanic_id", index = true) // TODO update ERD for index
   private long mechanicId;
 
   @NonNull
   @ColumnInfo(collate = ColumnInfo.NOCASE)
   private String reviewMsg = "";
 
- /* this might be needed later?
+  //TODO Update ERD with this column
   @ColumnInfo(name = "reputation")
-  private int rep;*/
+  private double rep;
 
   public long getMechanicId() {
     return mechanicId;

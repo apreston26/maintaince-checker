@@ -1,7 +1,6 @@
 package edu.cnm.deepdive.maintaincechecker.model.entity;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Index;
@@ -14,9 +13,13 @@ public class Mechanic {
   @ColumnInfo(name = "mechanic_id" )
   private long id;
 
+  @ColumnInfo(name = "location")
+  private long location;
+
   @NonNull
   @ColumnInfo(collate = ColumnInfo.NOCASE)
   private String name = "";
+
 
   public long getId() {
     return id;
@@ -24,6 +27,14 @@ public class Mechanic {
 
   public void setId(long id) {
     this.id = id;
+  }
+
+  public long getLocation() {
+    return location;
+  }
+
+  public void setLocation(long location) {
+    this.location = location;
   }
 
   @NonNull

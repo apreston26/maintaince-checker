@@ -64,14 +64,14 @@ public abstract class MaintenanceDatabase extends RoomDatabase {
         .addCallback(new MaintenanceCallback())
         .build();
   }
-
+  // This file might be deleted/altered since it changed from a string to an enum.
   private static class MaintenanceCallback extends Callback {
 
     @Override
     public void onCreate(@NonNull SupportSQLiteDatabase db) {
       super.onCreate(db);
       try {
-        Map<Mechanic, List<Maintenance>> map = parseFile(R.raw.mechanics);
+        Map<Mechanic, List<Maintenance>> map = parseFile(R.raw.mechanics); //TODO See if this is needed
         persist(map);
       } catch (IOException e) {
         throw new RuntimeException(e);

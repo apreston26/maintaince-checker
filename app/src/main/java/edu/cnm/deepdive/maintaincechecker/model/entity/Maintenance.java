@@ -20,7 +20,7 @@ public class Maintenance {
   @ColumnInfo(name = "maintenance_id")
   private long id;
 
-  @ColumnInfo(name = "mechanic_id", index = true)
+  @ColumnInfo(name = "mechanic_id", index = true) //TODO update ERD for index
   private long mechanicId;
 
   @ColumnInfo(name = "date")

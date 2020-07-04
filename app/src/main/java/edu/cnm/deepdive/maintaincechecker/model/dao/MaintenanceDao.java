@@ -6,11 +6,8 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
-import androidx.room.Transaction;
 import androidx.room.Update;
 import edu.cnm.deepdive.maintaincechecker.model.entity.Maintenance;
-import edu.cnm.deepdive.maintaincechecker.model.entity.Review;
-import edu.cnm.deepdive.maintaincechecker.model.pojo.MaintenanceType;
 import io.reactivex.Single;
 import java.util.Collection;
 import java.util.List;
@@ -29,7 +26,6 @@ public interface MaintenanceDao {
   @Delete
   Single<Integer> delete(Maintenance... maintenance);
 
-  @Transaction
   @Query("SELECT * FROM Maintenance ORDER BY type ")
   LiveData<List<Maintenance>> selectAll();
 
