@@ -1,0 +1,167 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "68a9c533e426842cf62d8c5ba153296a",
+    "entities": [
+      {
+        "tableName": "Review",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`review_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mechanic_id` INTEGER NOT NULL, `reviewMsg` TEXT NOT NULL COLLATE NOCASE, FOREIGN KEY(`mechanic_id`) REFERENCES `Mechanic`(`mechanic_id`) ON UPDATE NO ACTION ON DELETE SET NULL )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "review_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mechanicId",
+            "columnName": "mechanic_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "reviewMsg",
+            "columnName": "reviewMsg",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "review_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Review_mechanic_id",
+            "unique": false,
+            "columnNames": [
+              "mechanic_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Review_mechanic_id` ON `${TABLE_NAME}` (`mechanic_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Mechanic",
+            "onDelete": "SET NULL",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "mechanic_id"
+            ],
+            "referencedColumns": [
+              "mechanic_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "Mechanic",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mechanic_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `location` INTEGER NOT NULL, `name` TEXT NOT NULL COLLATE NOCASE)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "mechanic_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "location",
+            "columnName": "location",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "mechanic_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Mechanic_name",
+            "unique": true,
+            "columnNames": [
+              "name"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_Mechanic_name` ON `${TABLE_NAME}` (`name`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Maintenance",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`maintenance_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mechanic_id` INTEGER NOT NULL, `date` INTEGER, `type` INTEGER NOT NULL COLLATE NOCASE, FOREIGN KEY(`mechanic_id`) REFERENCES `Mechanic`(`mechanic_id`) ON UPDATE NO ACTION ON DELETE SET NULL )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "maintenance_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mechanicId",
+            "columnName": "mechanic_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "maintenance_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Maintenance_mechanic_id",
+            "unique": false,
+            "columnNames": [
+              "mechanic_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Maintenance_mechanic_id` ON `${TABLE_NAME}` (`mechanic_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Mechanic",
+            "onDelete": "SET NULL",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "mechanic_id"
+            ],
+            "referencedColumns": [
+              "mechanic_id"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '68a9c533e426842cf62d8c5ba153296a')"
+    ]
+  }
+}

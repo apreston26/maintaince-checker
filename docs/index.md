@@ -17,38 +17,51 @@ This app would be designed with the sole intent to keep your car up to date from
 ## Functionality
 
 * People will put in their location, so the app knows what mechanics are close by 
-* After this people will then put in their car information along with the date it last had maintenance 
-* Following this the app works like a scheduling app by having green, yellow, and red backgrounds which signify when to go and back to the shop. Green meaning up-to-date, yellow meaning near check up time, red meaning it has time has expired, and it should be checked up.  
+
+* After this people will then put in their car information along with the date it last had maintenance
+ 
+* Following this the app works like a scheduling app by having green, yellow, and red backgrounds which signify when to go and back to the shop. Green meaning up-to-date, yellow meaning near check up time, red meaning it has time has expired, and it should be checked up.
+  
 * There will be an add button under all the items where the user can add information about a new type of maintenance on their car.
+
 * Under the add button there will be a map button which shows the user the mechanics nearby and their respective reviews.
+
 * By clicking on the mechanic/mechanic shop it will list reviews. 
 
 ## Persistent data
 
 * Car maintenance types 
+
 * Maintenance dates
     
 ## Device/external services
 
 * Google maps 
-    * This service will be used in order to locate nearby maintenance shops by showing the address and how far away it is from the phone's current location. 
+
+    * This service will be used in order to locate nearby maintenance shops by showing the address and how far away it is from the phone's current location.
+     
 * [Yelp API](https://www.yelp.com/developers/documentation/v3/get_started)
+
     * This will be used to show users reviews of maintenance shops to assist deciding which maintenance shop is the safest decision for them. 
 
 ## Milestone 2 Implementation 
 
 * [Entity Classes](https://github.com/apreston26/maintence-checker/tree/master/app/src/main/java/edu/cnm/deepdive/maintaincechecker/model/entity)
+
 * [DAO Interfaces](https://github.com/apreston26/maintence-checker/tree/master/app/src/main/java/edu/cnm/deepdive/maintaincechecker/model/dao)
+
 * [Pojo Classes](https://github.com/apreston26/maintence-checker/tree/master/app/src/main/java/edu/cnm/deepdive/maintaincechecker/model/pojo)
+
 * [Database/Repository Classes](https://github.com/apreston26/maintence-checker/tree/master/app/src/main/java/edu/cnm/deepdive/maintaincechecker/service)
 
-#### Data Definition Language (DDL)
+* [Data Definition Language (DDL)](ddl.md)
 
 
 
 ## Stretch goals/possible enhancements 
 
 * Having a way to call the mechanic shops
+
 * Be able to have an option to schedule a time with the respective mechanic by clicking on them
 
 ## Design documentation
