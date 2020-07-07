@@ -54,7 +54,7 @@ This app would be designed with the sole intent to keep your car up to date from
 
 * [Database/Repository Classes](https://github.com/apreston26/maintence-checker/tree/master/app/src/main/java/edu/cnm/deepdive/maintaincechecker/service)
 
-* [Data Definition Language (DDL)](ddl.md)
+* [Data Definition Language (DDL)](sql/ddl.sql)
 
 
 
