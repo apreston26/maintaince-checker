@@ -24,15 +24,12 @@ public class FirstFragment extends Fragment {
   public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        FirstFragmentDirections.ActionFirstFragmentToSecondFragment action =
-            FirstFragmentDirections.
-                actionFirstFragmentToSecondFragment("From FirstFragment");
-        NavHostFragment.findNavController(FirstFragment.this)
-            .navigate(action);
-      }
+    view.findViewById(R.id.button_first).setOnClickListener(view1 -> {
+      FirstFragmentDirections.ActionFirstFragmentToSecondFragment action =
+          FirstFragmentDirections.
+              actionFirstFragmentToSecondFragment("From FirstFragment");
+      NavHostFragment.findNavController(FirstFragment.this)
+          .navigate(action);
     });
   }
 }
