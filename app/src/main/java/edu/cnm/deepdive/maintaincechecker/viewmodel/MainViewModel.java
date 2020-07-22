@@ -24,7 +24,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
   private final ReviewRepository reviewRepository;
   private final MutableLiveData<Throwable> throwable;
   private final CompositeDisposable pending;
-  private final MutableLiveData<MaintenanceType> maintenance;
+  private final MutableLiveData<List<Maintenance>> maintenance;
 
   public MainViewModel(@NonNull Application application) {
     super(application);
@@ -36,7 +36,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     pending = new CompositeDisposable();
   }
 
-  public LiveData<List<Maintenance>> getMMaintenance() {
+  public LiveData<List<Maintenance>> getMaintenanceType() {
     return maintenanceRepository.getAll();
   }
 
@@ -44,7 +44,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     return mechanicRepository.getAll();
   }
 
-  public LiveData<MaintenanceType> getMaintenance() {
+  public LiveData<List<Maintenance>> getMaintenance() {
     return maintenance;
   }
 

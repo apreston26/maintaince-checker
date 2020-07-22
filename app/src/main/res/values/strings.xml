@@ -12,4 +12,6 @@
   <string name="mechanic_button">Get Mechanic</string>
   <string name="authentication_failure">Unable to sign in with the provided credentials.</string>
   <string name="sign_out">Sign out</string>
+  <string name="default_mechanic">No Preference</string>
+  <string name="no_preference_mechanic">No Preference</string>
 </resources>
