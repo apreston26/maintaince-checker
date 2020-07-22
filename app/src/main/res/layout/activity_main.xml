@@ -8,24 +8,57 @@
   tools:context=".controller.MainActivity">
 
 
-  <com.google.android.material.appbar.AppBarLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:theme="@style/AppTheme.AppBarOverlay"
-    app:layout_constraintTop_toTopOf="parent">
-
-
-  </com.google.android.material.appbar.AppBarLayout>
 
   <com.google.android.material.floatingactionbutton.FloatingActionButton
     android:id="@+id/fab"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:srcCompat="@drawable/ic_add"
-    app:useCompatPadding="true"
-    app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"
-   />
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_margin="32dp"/>
+
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/add_maintenance"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:srcCompat="@drawable/ic_logo"
+    app:layout_constraintBottom_toTopOf="@id/fab"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_margin="32dp"/>
+
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/add_mechanic"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:srcCompat="@drawable/ic_logo"
+    android:layout_gravity="bottom|end"
+    app:layout_constraintBottom_toTopOf="@id/add_maintenance"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_margin="32dp"/>
+
+  <TextView
+    android:id="@+id/add_maintenance_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="@id/add_maintenance"
+    app:layout_constraintEnd_toEndOf="@id/add_maintenance"
+    app:layout_constraintTop_toTopOf="@id/add_maintenance"
+    android:layout_margin="64sp"
+    android:padding="@dimen/basic_margin"
+    android:text="@string/add_maintenance_text"/>
+
+  <TextView
+    android:id="@+id/add_mechanic_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="@id/add_mechanic"
+    app:layout_constraintEnd_toEndOf="@id/add_mechanic"
+    app:layout_constraintTop_toTopOf="@id/add_mechanic"
+    android:layout_margin="64sp"
+    android:padding="@dimen/basic_margin"
+    android:text="@string/add_mechanic_text"/>
+
   <include layout="@layout/content_main"/>
 
 

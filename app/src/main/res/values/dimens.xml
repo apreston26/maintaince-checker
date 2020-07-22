@@ -3,4 +3,5 @@
   <dimen name="login_padding">8dp</dimen>
   <dimen name="half_margin">4dp</dimen>
   <dimen name="quote_item_radius">4dp</dimen>
+  <dimen name="basic_margin">8dp</dimen>
 </resources>

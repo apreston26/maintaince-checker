@@ -2,8 +2,8 @@
   <string name="app_name">Maintenance Checker</string>
   <string name="title_activity_main">MainActivity</string>
   <!-- Strings used for fragments for navigation -->
-  <string name="first_fragment_label">First Fragment</string>
-  <string name="second_fragment_label">Second Fragment</string>
+  <string name="maintenance_fragment_label">Maintenance Fragment</string>
+  <string name="second_fragment_label">Mechanic Fragment</string>
   <string name="next">Next</string>
   <string name="previous">Previous</string>
 
@@ -14,4 +14,6 @@
   <string name="sign_out">Sign out</string>
   <string name="default_mechanic">No Preference</string>
   <string name="no_preference_mechanic">No Preference</string>
+  <string name="add_maintenance_text">Add Maintenance</string>
+  <string name="add_mechanic_text">Add Mechanic</string>
 </resources>

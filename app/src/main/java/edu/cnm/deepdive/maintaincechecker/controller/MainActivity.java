@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
@@ -18,6 +21,15 @@ import edu.cnm.deepdive.maintaincechecker.viewmodel.MainViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
+  private FloatingActionButton fab;
+  private FloatingActionButton addMechanic;
+  private FloatingActionButton addMaintenance;
+  private TextView addMechanicText;
+  private TextView addMaintenanceText;
+  private Animation fabOpen;
+  private Animation fabClose;
+  private boolean isOpen;
+  
   private GoogleSignInService signInService;
 
   @Override
@@ -45,13 +57,35 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
     setupObservers();
 
-    FloatingActionButton fab = findViewById(R.id.fab);
-    fab.setOnClickListener(view ->
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-        .setAction("Action", null).show());
+    fab = findViewById(R.id.fab);
+    addMechanic = findViewById(R.id.add_mechanic);
+    addMaintenance = findViewById(R.id.add_maintenance);
+    addMechanicText = findViewById(R.id.add_mechanic_text);
+    addMaintenanceText = findViewById(R.id.add_maintenance_text);
+    fabOpen = AnimationUtils.loadAnimation(MainActivity.this, R.anim.fab_open);
+    fabClose = AnimationUtils.loadAnimation(MainActivity.this, R.anim.fab_close);
+    isOpen = false;
+
+    fab.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        if(isOpen) {
+          addMaintenance.setVisibility(View.INVISIBLE);
+          addMechanic.setVisibility(View.INVISIBLE);
+          addMaintenanceText.setVisibility(View.INVISIBLE);
+          addMechanicText.setVisibility(View.INVISIBLE);
+          isOpen = false;
+        } else {
+          addMaintenance.setVisibility(View.VISIBLE);
+          addMechanic.setVisibility(View.VISIBLE);
+          addMaintenanceText.setVisibility(View.VISIBLE);
+          addMechanicText.setVisibility(View.VISIBLE);
+          isOpen = true;
+        }
+      }
+    });
   }
 
   private void setupObservers() {
