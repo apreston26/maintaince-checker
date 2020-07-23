@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -26,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
   private FloatingActionButton addMaintenance;
   private TextView addMechanicText;
   private TextView addMaintenanceText;
-  private Animation fabOpen;
-  private Animation fabClose;
   private boolean isOpen;
   
   private GoogleSignInService signInService;
@@ -64,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
     addMaintenance = findViewById(R.id.add_maintenance);
     addMechanicText = findViewById(R.id.add_mechanic_text);
     addMaintenanceText = findViewById(R.id.add_maintenance_text);
-    fabOpen = AnimationUtils.loadAnimation(MainActivity.this, R.anim.fab_open);
-    fabClose = AnimationUtils.loadAnimation(MainActivity.this, R.anim.fab_close);
     isOpen = false;
 
     fab.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
       }
     });
   }
+
+
 
   private void setupObservers() {
     MainViewModel viewModel = new ViewModelProvider(this).get(MainViewModel.class);
