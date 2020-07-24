@@ -1,10 +1,12 @@
 package edu.cnm.deepdive.maintaincechecker.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -22,20 +24,12 @@ public class MaintenanceFragment extends Fragment implements MaintenanceAdapter.
   private MainViewModel mainViewModel;
   private RecyclerView maintenanceList;
 
-
   @SuppressWarnings("ConstantConditions")
   public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     mainViewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
     mainViewModel.getMaintenanceType().observe(getViewLifecycleOwner(),
         (types) -> maintenanceList.setAdapter(new MaintenanceAdapter(getContext(), types, this)));
-
-    view.findViewById(R.id.button_first).setOnClickListener(view1 -> {
-      MaintenanceFragmentDirections.ActionFirstFragmentToSecondFragment action =
-          MaintenanceFragmentDirections.actionFirstFragmentToSecondFragment("From FirstFragment");
-      NavHostFragment.findNavController(MaintenanceFragment.this)
-          .navigate(action);
-    });
   }
 
   public View onCreateView(@NonNull LayoutInflater inflater,
@@ -44,6 +38,7 @@ public class MaintenanceFragment extends Fragment implements MaintenanceAdapter.
     maintenanceList = root.findViewById(R.id.maintenance_list);
     return root;
   }
+
 
   @Override
   public void onClick(View v, int position, MaintenanceType type) {

@@ -1,12 +1,15 @@
 package edu.cnm.deepdive.maintaincechecker.controller;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -25,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
   private TextView addMechanicText;
   private TextView addMaintenanceText;
   private boolean isOpen;
-  
   private GoogleSignInService signInService;
+
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
@@ -62,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     addMaintenanceText = findViewById(R.id.add_maintenance_text);
     isOpen = false;
 
-    fab.setOnClickListener(new View.OnClickListener() {
+    fab.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
         if(isOpen) {
@@ -99,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
     Intent intent = new Intent(this, LoginActivity.class);
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
     startActivity(intent);
+
+
   }
 
 }
