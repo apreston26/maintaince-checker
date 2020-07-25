@@ -30,6 +30,14 @@ public class MaintenanceFragment extends Fragment implements MaintenanceAdapter.
     mainViewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
     mainViewModel.getMaintenanceType().observe(getViewLifecycleOwner(),
         (types) -> maintenanceList.setAdapter(new MaintenanceAdapter(getContext(), types, this)));
+
+    // TODO Find a way to change this button to the button in the fab menu
+    view.findViewById(R.id.button_first).setOnClickListener(view1 -> {
+      MaintenanceFragmentDirections.ActionFirstFragmentToSecondFragment action =
+          MaintenanceFragmentDirections.actionFirstFragmentToSecondFragment("From FirstFragment");
+      NavHostFragment.findNavController(MaintenanceFragment.this)
+          .navigate(action);
+    });
   }
 
   public View onCreateView(@NonNull LayoutInflater inflater,

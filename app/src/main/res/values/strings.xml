@@ -16,4 +16,5 @@
   <string name="no_preference_mechanic">No Preference</string>
   <string name="add_maintenance_text">Add Maintenance</string>
   <string name="add_mechanic_text">Add Mechanic</string>
+  <string name="permissions_dialog_title">Permissions Info</string>
 </resources>

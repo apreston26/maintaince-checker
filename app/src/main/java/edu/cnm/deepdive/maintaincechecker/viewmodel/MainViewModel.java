@@ -25,15 +25,18 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
   private final MutableLiveData<Throwable> throwable;
   private final CompositeDisposable pending;
   private final MutableLiveData<List<Maintenance>> maintenance;
+  private final MutableLiveData<Boolean> permissionsChecked;
 
   public MainViewModel(@NonNull Application application) {
     super(application);
     maintenanceRepository = new MaintenanceRepository(application);
     mechanicRepository = new MechanicRepository(application);
+    permissionsChecked = new MutableLiveData<>(false);
     reviewRepository = new ReviewRepository(application);
     maintenance = new MutableLiveData<>();
     throwable = new MutableLiveData<>();
     pending = new CompositeDisposable();
+
   }
 
   public LiveData<List<Maintenance>> getMaintenanceType() {
@@ -50,6 +53,14 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
 
   public LiveData<Throwable> getThrowable() {
     return throwable;
+  }
+
+  public LiveData<Boolean> getPermissionsChecked() {
+    return permissionsChecked;
+  }
+
+  public void setPermissionsChecked(boolean checked) {
+    permissionsChecked.setValue(checked);
   }
 
 @OnLifecycleEvent(Event.ON_STOP)
