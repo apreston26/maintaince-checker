@@ -6,7 +6,7 @@
   <string name="second_fragment_label">Mechanic Fragment</string>
   <string name="next">Next</string>
   <string name="previous">Previous</string>
-
+<!--  String used for buttons -->
   <string name="hello_first_fragment">Hello first fragment</string>
   <string name="hello_second_fragment">This is where the mechanic page would go</string>
   <string name="mechanic_button">Get Mechanic</string>
@@ -16,5 +16,11 @@
   <string name="no_preference_mechanic">No Preference</string>
   <string name="add_maintenance_text">Add Maintenance</string>
   <string name="add_mechanic_text">Add Mechanic</string>
+<!--  Strings used for permissions -->
   <string name="permissions_dialog_title">Permissions Info</string>
+  <string name="internet_explanation">This app needs to access the internet because in order to use Google Maps and help you find mechanics near you</string>
+  <string name="access_fine_location_explanation">This app uses your location info to use Google Maps and help you find mechanics near you </string>
+  <string name="type_hint">Maintenance Type</string>
+  <string name="mechanic_hint">Mechanic for Maintenance</string>
+
 </resources>
