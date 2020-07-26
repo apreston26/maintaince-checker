@@ -8,6 +8,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 import edu.cnm.deepdive.maintaincechecker.model.entity.Maintenance;
+import edu.cnm.deepdive.maintaincechecker.model.pojo.MaintenanceType;
 import io.reactivex.Single;
 import java.util.Collection;
 import java.util.List;
@@ -27,7 +28,7 @@ public interface MaintenanceDao {
   Single<Integer> delete(Maintenance... maintenance);
 
   @Query("SELECT * FROM Maintenance ORDER BY type ")
-  LiveData<List<Maintenance>> selectAll();
+  LiveData<List<MaintenanceType>> selectAll();
 
   @Query("SELECT * FROM Maintenance WHERE mechanic_id = :mechanicId")
   Single<List<Maintenance>> selectByMechanicId(long mechanicId);

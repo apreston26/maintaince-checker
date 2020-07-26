@@ -26,7 +26,7 @@ public class MaintenanceRepository {
     maintenanceDao = database.getMaintenanceDao();
   }
 
-  public LiveData<List<Maintenance>> getAll() {
+  public LiveData<List<MaintenanceType>> getAll() {
     return maintenanceDao.selectAll();
   }
 
@@ -54,4 +54,6 @@ public class MaintenanceRepository {
     }
   }
 
+  public void postValue(List<Maintenance> maintenances) {
+  }
 }

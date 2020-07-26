@@ -24,7 +24,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
   private final ReviewRepository reviewRepository;
   private final MutableLiveData<Throwable> throwable;
   private final CompositeDisposable pending;
-  private final MutableLiveData<List<Maintenance>> maintenance;
+  private final MutableLiveData<MaintenanceType> maintenance;
   private final MutableLiveData<Boolean> permissionsChecked;
 
   public MainViewModel(@NonNull Application application) {
@@ -39,7 +39,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
 
   }
 
-  public LiveData<List<Maintenance>> getMaintenanceType() {
+  public LiveData<List<MaintenanceType>> getMaintenanceTypes() {
     return maintenanceRepository.getAll();
   }
 
@@ -47,7 +47,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     return mechanicRepository.getAll();
   }
 
-  public LiveData<List<Maintenance>> getMaintenance() {
+  public MutableLiveData<MaintenanceType> getMaintenance() {
     return maintenance;
   }
 
@@ -61,6 +61,28 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
 
   public void setPermissionsChecked(boolean checked) {
     permissionsChecked.setValue(checked);
+  }
+
+  public void setQuoteId(long id) {
+    throwable.setValue(null);
+    pending.add(
+        maintenanceRepository.get(id)
+            .subscribe(
+                this.maintenanceRepository::postValue,
+                this.throwable::postValue
+            )
+    );
+  }
+
+  public void saveType(Maintenance maintenance) {
+    throwable.setValue(null);
+    pending.add(
+        maintenanceRepository.save(maintenance)
+            .subscribe(
+                () -> {},
+                this.throwable::postValue
+            )
+    );
   }
 
 @OnLifecycleEvent(Event.ON_STOP)

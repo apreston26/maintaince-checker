@@ -14,6 +14,7 @@ import edu.cnm.deepdive.maintaincechecker.model.dao.MaintenanceDao;
 import edu.cnm.deepdive.maintaincechecker.model.dao.MechanicDao;
 import edu.cnm.deepdive.maintaincechecker.model.dao.ReviewDao;
 import edu.cnm.deepdive.maintaincechecker.model.entity.Maintenance;
+import edu.cnm.deepdive.maintaincechecker.model.entity.Maintenance.Type;
 import edu.cnm.deepdive.maintaincechecker.model.entity.Mechanic;
 import edu.cnm.deepdive.maintaincechecker.model.entity.Review;
 import io.reactivex.schedulers.Schedulers;

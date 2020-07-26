@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import androidx.fragment.app.DialogFragment;
 import edu.cnm.deepdive.maintaincechecker.R;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,16 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 public class SecondFragment extends Fragment {
+
+  private static final String ID_KEY = "type_id";
+
+  public static SecondFragment newInstance(long typeId) {
+    SecondFragment fragment = new SecondFragment();
+    Bundle args = new Bundle();
+    args.putLong(ID_KEY, typeId);
+    fragment.setArguments(args);
+    return fragment;
+  }
 
   @Override
   public View onCreateView(

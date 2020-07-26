@@ -7,8 +7,9 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverter;
 import java.util.Date;
+import javax.annotation.Nullable;
 
-//TODO Make this null
+@Nullable
 @Entity(foreignKeys = @ForeignKey(
     entity = Mechanic.class,
     parentColumns = "mechanic_id",
@@ -21,14 +22,14 @@ public class Maintenance {
   private long id;
 
   @ColumnInfo(name = "mechanic_id", index = true) //TODO update ERD for index
-  private long mechanicId;
+  private Long mechanicId;
 
   @ColumnInfo(name = "date")
   private Date date;
 
   @NonNull
   @ColumnInfo(name = "type", collate = ColumnInfo.NOCASE)
-  private Type type;
+  private String type;
 
   public long getId() {
     return id;
@@ -50,18 +51,20 @@ public class Maintenance {
     return mechanicId;
   }
 
-  public void setMechanicId(long mechanicId) {
+  public void setMechanicId(Long mechanicId) {
     this.mechanicId = mechanicId;
   }
 
   @NonNull
-  public Type getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(@NonNull Type type) {
+  public void setType(@NonNull String type) {
     this.type = type;
   }
+
+  // TODO STRETCH-GOAL If there is enough time implement an enum instead of editable text.
 
   public enum Type {
     OIL_CHANGE,

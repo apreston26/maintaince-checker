@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "68a9c533e426842cf62d8c5ba153296a",
+    "identityHash": "186d227048b56efe5244f0d777eaedd9",
     "entities": [
       {
         "tableName": "Review",
@@ -100,7 +100,7 @@
       },
       {
         "tableName": "Maintenance",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`maintenance_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mechanic_id` INTEGER NOT NULL, `date` INTEGER, `type` INTEGER NOT NULL COLLATE NOCASE, FOREIGN KEY(`mechanic_id`) REFERENCES `Mechanic`(`mechanic_id`) ON UPDATE NO ACTION ON DELETE SET NULL )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`maintenance_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mechanic_id` INTEGER, `date` INTEGER, `type` TEXT NOT NULL COLLATE NOCASE, FOREIGN KEY(`mechanic_id`) REFERENCES `Mechanic`(`mechanic_id`) ON UPDATE NO ACTION ON DELETE SET NULL )",
         "fields": [
           {
             "fieldPath": "id",
@@ -112,7 +112,7 @@
             "fieldPath": "mechanicId",
             "columnName": "mechanic_id",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "date",
@@ -123,7 +123,7 @@
           {
             "fieldPath": "type",
             "columnName": "type",
-            "affinity": "INTEGER",
+            "affinity": "TEXT",
             "notNull": true
           }
         ],
@@ -161,7 +161,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '68a9c533e426842cf62d8c5ba153296a')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '186d227048b56efe5244f0d777eaedd9')"
     ]
   }
 }
