@@ -61,7 +61,7 @@ public class MaintenanceFragment extends Fragment implements MaintenanceAdapter.
     TypeEditFragment fragment = TypeEditFragment.newInstance(typeId);
     fragment.show(getChildFragmentManager(), fragment.getClass().getName());
 
-    SecondFragment fragment2 = SecondFragment.newInstance(typeId);
+    MapFragment fragment2 = MapFragment.newInstance(typeId);
   }
 
 }

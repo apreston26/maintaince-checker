@@ -17,7 +17,7 @@
   <fragment
     android:id="@+id/MechanicFragment"
     android:label="@string/second_fragment_label"
-    android:name="edu.cnm.deepdive.maintaincechecker.controller.SecondFragment"
+    android:name="edu.cnm.deepdive.maintaincechecker.controller.MapFragment"
     tools:layout="@layout/fragment_second">
 
     <action

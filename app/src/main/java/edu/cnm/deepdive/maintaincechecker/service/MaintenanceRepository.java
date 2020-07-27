@@ -26,11 +26,11 @@ public class MaintenanceRepository {
     maintenanceDao = database.getMaintenanceDao();
   }
 
-  public LiveData<List<Maintenance>> getAll() {
+  public LiveData<List<MaintenanceType>> getAll() {
     return maintenanceDao.selectAll();
   }
 
-  public Single<List<Maintenance>> get(long id) {
+  public Single<MaintenanceType> get(long id) {
     return maintenanceDao.selectByMechanicId(id).subscribeOn(Schedulers.io());
   }
 

@@ -39,7 +39,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
 
   }
 
-  public LiveData<List<Maintenance>> getMaintenanceType() {
+  public LiveData<List<MaintenanceType>> getMaintenanceType() {
     return maintenanceRepository.getAll();
   }
 
