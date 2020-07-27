@@ -7,7 +7,7 @@ import edu.cnm.deepdive.maintaincechecker.model.entity.Mechanic;
 
 public class MaintenanceType extends Maintenance {
 
-  @Relation(entity = Mechanic.class, entityColumn = "mechanic_id", parentColumn = "mechanic_id")
+  @Relation(entity = Maintenance.class, entityColumn = "mechanic_id", parentColumn = "mechanic_id")
   private Mechanic mechanic;
 
   public Mechanic getMechanic() {

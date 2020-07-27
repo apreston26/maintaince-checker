@@ -30,7 +30,7 @@ public class MaintenanceFragment extends Fragment implements MaintenanceAdapter.
   public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     mainViewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
-    mainViewModel.getMaintenanceTypes().observe(getViewLifecycleOwner(),
+    mainViewModel.getMaintenanceType().observe(getViewLifecycleOwner(),
         (types) -> maintenanceList.setAdapter(new MaintenanceAdapter(getContext(), types, this)));
 
     // TODO Find a way to change this button to the button in the fab menu

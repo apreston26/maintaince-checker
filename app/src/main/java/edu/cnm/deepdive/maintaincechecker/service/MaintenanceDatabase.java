@@ -14,7 +14,6 @@ import edu.cnm.deepdive.maintaincechecker.model.dao.MaintenanceDao;
 import edu.cnm.deepdive.maintaincechecker.model.dao.MechanicDao;
 import edu.cnm.deepdive.maintaincechecker.model.dao.ReviewDao;
 import edu.cnm.deepdive.maintaincechecker.model.entity.Maintenance;
-import edu.cnm.deepdive.maintaincechecker.model.entity.Maintenance.Type;
 import edu.cnm.deepdive.maintaincechecker.model.entity.Mechanic;
 import edu.cnm.deepdive.maintaincechecker.model.entity.Review;
 import io.reactivex.schedulers.Schedulers;
@@ -37,7 +36,7 @@ import org.apache.commons.csv.CSVRecord;
     entities = {Review.class, Mechanic.class, Maintenance.class},
     version = 1
 )
-@TypeConverters({MaintenanceDatabase.Converters.class, Maintenance.Type.class})
+@TypeConverters({MaintenanceDatabase.Converters.class})
 public abstract class MaintenanceDatabase extends RoomDatabase {
 
   private static final String DB_NAME = "maintenance_db";

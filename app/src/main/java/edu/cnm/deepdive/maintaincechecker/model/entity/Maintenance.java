@@ -47,7 +47,7 @@ public class Maintenance {
     this.date = date;
   }
 
-  public long getMechanicId() {
+  public Long getMechanicId() {
     return mechanicId;
   }
 
@@ -66,18 +66,18 @@ public class Maintenance {
 
   // TODO STRETCH-GOAL If there is enough time implement an enum instead of editable text.
 
-  public enum Type {
-    OIL_CHANGE,
-    TIRE_ROTATE;
-
-    @TypeConverter
-    public static Integer typeToInteger(Type value) {
-      return (value != null) ? value.ordinal() : null;
-    }
-
-    @TypeConverter
-    public static Type integerToType(Integer value) {
-      return (value != null) ? Type.values()[value] : null;
-    }
-  }
+//  public enum Type {
+//    OIL_CHANGE,
+//    TIRE_ROTATE;
+//
+//    @TypeConverter
+//    public static Integer typeToInteger(Type value) {
+//      return (value != null) ? value.ordinal() : null;
+//    }
+//
+//    @TypeConverter
+//    public static Type integerToType(Integer value) {
+//      return (value != null) ? Type.values()[value] : null;
+//    }
+//  }
 }

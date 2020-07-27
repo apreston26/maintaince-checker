@@ -18,11 +18,11 @@ public class MaintenanceAdapter extends RecyclerView.Adapter<Holder> {
 
   private final String unattributedMechanic;
   private final Context context;
-  private final List<MaintenanceType> types;
+  private final List<Maintenance> types;
   private final OnClickListener clickListener;
 
 
-  public MaintenanceAdapter(Context context, List<MaintenanceType> types,
+  public MaintenanceAdapter(Context context, List<Maintenance> types,
       OnClickListener clickListener) {
     super();
     this.context = context;

@@ -110,7 +110,7 @@ public class TypeEditFragment extends DialogFragment implements TextWatcher {
                     mechanicName.setText((type.getMechanic() != null) ? type.getMechanic().getName() : "");
                 }
             });
-            viewModel.setQuoteId(typeId);
+            viewModel.setTypeId(typeId);
         } else {
             maintenance = new Maintenance();
         }

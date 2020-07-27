@@ -151,7 +151,6 @@ public class PermissionsService {
       Bundle args = (getArguments() != null) ? getArguments() : new Bundle();
       String[] permissionsToExplain = args.getStringArray(PERMISSIONS_TO_EXPLAIN_KEY);
       String[] permissionsToRequest = args.getStringArray(PERMISSIONS_TO_REQUEST_KEY);
-
       int requestCode = args.getInt(REQUEST_CODE_KEY);
       //noinspection ConstantConditions
       return new AlertDialog.Builder(getContext())

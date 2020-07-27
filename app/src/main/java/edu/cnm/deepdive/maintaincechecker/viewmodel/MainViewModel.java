@@ -39,7 +39,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
 
   }
 
-  public LiveData<List<MaintenanceType>> getMaintenanceTypes() {
+  public LiveData<List<Maintenance>> getMaintenanceType() {
     return maintenanceRepository.getAll();
   }
 
@@ -47,7 +47,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     return mechanicRepository.getAll();
   }
 
-  public MutableLiveData<MaintenanceType> getMaintenance() {
+  public LiveData<MaintenanceType> getMaintenance() {
     return maintenance;
   }
 
@@ -63,12 +63,12 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     permissionsChecked.setValue(checked);
   }
 
-  public void setQuoteId(long id) {
+  public void setTypeId(long id) {
     throwable.setValue(null);
     pending.add(
         maintenanceRepository.get(id)
             .subscribe(
-                this.maintenanceRepository::postValue,
+                this.maintenance::postValue,
                 this.throwable::postValue
             )
     );
