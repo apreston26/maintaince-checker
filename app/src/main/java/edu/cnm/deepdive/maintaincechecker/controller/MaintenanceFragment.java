@@ -48,8 +48,6 @@ public class MaintenanceFragment extends Fragment implements MaintenanceAdapter.
     maintenanceList = root.findViewById(R.id.maintenance_list);
     addMaintenance = root.findViewById(R.id.add_maintenance);
     addMaintenance.setOnClickListener((v) -> editType(0));
-    addMechanic = root.findViewById(R.id.add_mechanic);
-    addMechanic.setOnClickListener((v) -> editType(1));
     return root;
   }
 
