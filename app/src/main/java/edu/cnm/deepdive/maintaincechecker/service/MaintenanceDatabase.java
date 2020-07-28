@@ -1,6 +1,5 @@
 package edu.cnm.deepdive.maintaincechecker.service;
 
-import android.annotation.SuppressLint;
 import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -8,16 +7,13 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
-import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import edu.cnm.deepdive.maintaincechecker.R;
 import edu.cnm.deepdive.maintaincechecker.model.dao.MaintenanceDao;
 import edu.cnm.deepdive.maintaincechecker.model.dao.MechanicDao;
-import edu.cnm.deepdive.maintaincechecker.model.dao.ReviewDao;
 import edu.cnm.deepdive.maintaincechecker.model.entity.Maintenance;
 import edu.cnm.deepdive.maintaincechecker.model.entity.Maintenance.Type;
 import edu.cnm.deepdive.maintaincechecker.model.entity.Mechanic;
-import edu.cnm.deepdive.maintaincechecker.model.entity.Review;
 import io.reactivex.schedulers.Schedulers;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,19 +22,15 @@ import java.io.Reader;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
 @Database(
-    entities = {Review.class, Mechanic.class, Maintenance.class},
+    entities = {Mechanic.class, Maintenance.class},
     version = 2,
     exportSchema = true
 )
@@ -56,8 +48,6 @@ public abstract class MaintenanceDatabase extends RoomDatabase {
   public abstract MaintenanceDao getMaintenanceDao();
 
   public abstract MechanicDao getMechanicDao();
-
-  public abstract ReviewDao getReviewDao();
 
   public static MaintenanceDatabase getInstance() {
     return InstanceHolder.INSTANCE;

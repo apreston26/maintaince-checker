@@ -13,7 +13,6 @@ import edu.cnm.deepdive.maintaincechecker.model.entity.Mechanic;
 import edu.cnm.deepdive.maintaincechecker.model.pojo.MaintenanceWithMechanic;
 import edu.cnm.deepdive.maintaincechecker.service.MaintenanceRepository;
 import edu.cnm.deepdive.maintaincechecker.service.MechanicRepository;
-import edu.cnm.deepdive.maintaincechecker.service.ReviewRepository;
 import io.reactivex.disposables.CompositeDisposable;
 import java.util.List;
 
@@ -21,7 +20,6 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
 
   private final MaintenanceRepository maintenanceRepository;
   private final MechanicRepository mechanicRepository;
-  private final ReviewRepository reviewRepository;
   private final MutableLiveData<Throwable> throwable;
   private final CompositeDisposable pending;
   private final MutableLiveData<MaintenanceWithMechanic> maintenance;
@@ -32,7 +30,6 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     maintenanceRepository = new MaintenanceRepository(application);
     mechanicRepository = new MechanicRepository(application);
     permissionsChecked = new MutableLiveData<>(false);
-    reviewRepository = new ReviewRepository(application);
     maintenance = new MutableLiveData<>();
     throwable = new MutableLiveData<>();
     pending = new CompositeDisposable();

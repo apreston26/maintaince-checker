@@ -66,8 +66,6 @@ To view the code directly please visit our implementation page [here](implementa
 
 * Be able to have an option to schedule a time with the respective mechanic by clicking on them
 
-* Adding a spinner for maintenance types
-
 ## Build Instructions 
 
 Cloning the repository 
