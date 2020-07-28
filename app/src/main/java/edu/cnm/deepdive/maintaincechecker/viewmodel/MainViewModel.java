@@ -10,7 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.OnLifecycleEvent;
 import edu.cnm.deepdive.maintaincechecker.model.entity.Maintenance;
 import edu.cnm.deepdive.maintaincechecker.model.entity.Mechanic;
-import edu.cnm.deepdive.maintaincechecker.model.pojo.MaintenanceType;
+import edu.cnm.deepdive.maintaincechecker.model.pojo.MaintenanceWithMechanic;
 import edu.cnm.deepdive.maintaincechecker.service.MaintenanceRepository;
 import edu.cnm.deepdive.maintaincechecker.service.MechanicRepository;
 import edu.cnm.deepdive.maintaincechecker.service.ReviewRepository;
@@ -24,7 +24,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
   private final ReviewRepository reviewRepository;
   private final MutableLiveData<Throwable> throwable;
   private final CompositeDisposable pending;
-  private final MutableLiveData<MaintenanceType> maintenance;
+  private final MutableLiveData<MaintenanceWithMechanic> maintenance;
   private final MutableLiveData<Boolean> permissionsChecked;
 
   public MainViewModel(@NonNull Application application) {
@@ -39,7 +39,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
 
   }
 
-  public LiveData<List<MaintenanceType>> getMaintenanceType() {
+  public LiveData<List<MaintenanceWithMechanic>> getMaintenanceHistory() {
     return maintenanceRepository.getAll();
   }
 
@@ -47,7 +47,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     return mechanicRepository.getAll();
   }
 
-  public LiveData<MaintenanceType> getMaintenance() {
+  public LiveData<MaintenanceWithMechanic> getMaintenance() {
     return maintenance;
   }
 
@@ -63,7 +63,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     permissionsChecked.setValue(checked);
   }
 
-  public void setTypeId(long id) {
+  public void setMaintenanceId(long id) {
     throwable.setValue(null);
     pending.add(
         maintenanceRepository.get(id)
@@ -74,10 +74,21 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     );
   }
 
-  public void saveType(Maintenance maintenance) {
+  public void save(Maintenance maintenance) {
     throwable.setValue(null);
     pending.add(
         maintenanceRepository.save(maintenance)
+            .subscribe(
+                () -> {},
+                this.throwable::postValue
+            )
+    );
+  }
+
+  public void save(Maintenance maintenance, String mechanicName) {
+    throwable.setValue(null);
+    pending.add(
+        maintenanceRepository.save(maintenance, mechanicName)
             .subscribe(
                 () -> {},
                 this.throwable::postValue

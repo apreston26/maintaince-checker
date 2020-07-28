@@ -5,7 +5,7 @@ import androidx.room.Relation;
 import edu.cnm.deepdive.maintaincechecker.model.entity.Maintenance;
 import edu.cnm.deepdive.maintaincechecker.model.entity.Mechanic;
 
-public class MaintenanceType extends Maintenance {
+public class MaintenanceWithMechanic extends Maintenance {
 
   @Relation(entity = Mechanic.class, entityColumn = "mechanic_id", parentColumn = "mechanic_id")
   private Mechanic mechanic;

@@ -64,32 +64,6 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     setupObservers();
     checkPermissionsOnce();
-
-    fab = findViewById(R.id.fab);
-    addMechanic = findViewById(R.id.add_mechanic);
-    addMaintenance = findViewById(R.id.add_maintenance);
-    addMechanicText = findViewById(R.id.add_mechanic_text);
-    addMaintenanceText = findViewById(R.id.add_maintenance_text);
-    isOpen = false;
-
-    fab.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        if(isOpen) {
-          addMaintenance.setVisibility(View.INVISIBLE);
-          addMechanic.setVisibility(View.INVISIBLE);
-          addMaintenanceText.setVisibility(View.INVISIBLE);
-          addMechanicText.setVisibility(View.INVISIBLE);
-          isOpen = false;
-        } else {
-          addMaintenance.setVisibility(View.VISIBLE);
-          addMechanic.setVisibility(View.VISIBLE);
-          addMaintenanceText.setVisibility(View.VISIBLE);
-          addMechanicText.setVisibility(View.VISIBLE);
-          isOpen = true;
-        }
-      }
-    });
   }
 
 

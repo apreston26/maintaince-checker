@@ -15,6 +15,7 @@ import edu.cnm.deepdive.maintaincechecker.model.dao.MaintenanceDao;
 import edu.cnm.deepdive.maintaincechecker.model.dao.MechanicDao;
 import edu.cnm.deepdive.maintaincechecker.model.dao.ReviewDao;
 import edu.cnm.deepdive.maintaincechecker.model.entity.Maintenance;
+import edu.cnm.deepdive.maintaincechecker.model.entity.Maintenance.Type;
 import edu.cnm.deepdive.maintaincechecker.model.entity.Mechanic;
 import edu.cnm.deepdive.maintaincechecker.model.entity.Review;
 import io.reactivex.schedulers.Schedulers;
@@ -22,6 +23,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -38,7 +42,7 @@ import org.apache.commons.csv.CSVRecord;
     version = 2,
     exportSchema = true
 )
-@TypeConverters({MaintenanceDatabase.Converters.class})
+@TypeConverters({MaintenanceDatabase.Converters.class, Maintenance.Type.class})
 public abstract class MaintenanceDatabase extends RoomDatabase {
 
   private static final String DB_NAME = "maintenance_db";
@@ -63,22 +67,10 @@ public abstract class MaintenanceDatabase extends RoomDatabase {
 
     private static final MaintenanceDatabase INSTANCE = Room
         .databaseBuilder(context, MaintenanceDatabase.class, DB_NAME)
-        .addMigrations(new Migration12())
         .addCallback(new MaintenanceCallback())
         .build();
   }
 
-  private static final class Migration12 extends Migration {
-
-    public Migration12() {
-      super(1, 2);
-    }
-
-    @Override
-    public void migrate(@NonNull SupportSQLiteDatabase database) {
-      database.execSQL("ALTER ");
-    }
-  }
 
   // This file might be deleted/altered since it changed from a string to an enum.
   private static class MaintenanceCallback extends Callback {
@@ -86,75 +78,26 @@ public abstract class MaintenanceDatabase extends RoomDatabase {
     @Override
     public void onCreate(@NonNull SupportSQLiteDatabase db) {
       super.onCreate(db);
-      try {
-        Map<Mechanic, List<Maintenance>> map = parseFile(R.raw.mechanics); //TODO See if this is needed
-        persist(map);
-      } catch (IOException e) {
+      try (
+          InputStream input = context.getResources().openRawResource(R.raw.maintenance);
+          Reader reader = new InputStreamReader(input);
+          CSVParser parser = new CSVParser(reader, CSVFormat.EXCEL
+              .withIgnoreEmptyLines().withIgnoreSurroundingSpaces().withFirstRecordAsHeader());
+      ) {
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        List<Maintenance> maints = new LinkedList<>();
+        for (CSVRecord record : parser) {
+          Maintenance maintenance = new Maintenance();
+          maintenance.setDate(formatter.parse(record.get(0)));
+          maintenance.setType(Type.valueOf(record.get(1)));
+          maints.add(maintenance);
+        }
+        MaintenanceDatabase.getInstance().getMaintenanceDao().insert(maints)
+            .subscribeOn(Schedulers.io())
+            .subscribe();
+      } catch (IOException | ParseException e) {
         throw new RuntimeException(e);
       }
-    }
-
-
-
-    private Map<Mechanic, List<Maintenance>> parseFile(int resourceId) throws IOException {
-      try (
-          InputStream input = MaintenanceDatabase.context.getResources()
-              .openRawResource(resourceId);
-          Reader reader = new InputStreamReader(input);
-          CSVParser parser = CSVParser.parse(
-              reader, CSVFormat.EXCEL.withIgnoreSurroundingSpaces().withIgnoreEmptyLines());
-      ) {
-        Map<Mechanic, List<Maintenance>> map = new HashMap<>();
-        for (CSVRecord record : parser) {
-          Mechanic mechanic = null;
-          String mechanicName = record.get(0).trim();
-          if (!mechanicName.isEmpty()) {
-            mechanic = new Mechanic();
-            mechanic.setName(mechanicName);
-          }
-          List<Maintenance> maintenanceList = map
-              .computeIfAbsent(mechanic, (s) -> new LinkedList<>());
-          Maintenance maintenance = new Maintenance();
-          maintenanceList.add(maintenance);
-        }
-        return map;
-      }
-    }
-
-    @SuppressLint("CheckResult")
-    private void persist(Map<Mechanic, List<Maintenance>> map) {
-      MaintenanceDatabase database = MaintenanceDatabase.getInstance();
-      MechanicDao mechanicDao = database.getMechanicDao();
-      MaintenanceDao maintenanceDao = database.getMaintenanceDao();
-      List<Mechanic> mechanics = new LinkedList<>(map.keySet());
-      List<Maintenance> unattributed = map.getOrDefault(null, Collections.emptyList());
-      mechanics.remove(null);
-      //noinspection ResultOfMethodCallIgnored
-      mechanicDao.insert(mechanics)
-          .subscribeOn(Schedulers.io())
-          .flatMap((mechanicIds) -> {
-            List<Maintenance> maintenanceList = new LinkedList<>();
-            Iterator<Long> idIterator = mechanicIds.iterator();
-            Iterator<Mechanic> mechanicIterator = mechanics.iterator();
-            while (idIterator.hasNext()) {
-              long mechanicId = idIterator.next();
-              for (Maintenance maintenance : map
-                  .getOrDefault(mechanicIterator.next(), Collections.emptyList())) {
-                maintenance.setMechanicId(mechanicId);
-                maintenanceList.add(maintenance);
-              }
-            }
-
-            maintenanceList.addAll(unattributed);
-            return maintenanceDao.insert(maintenanceList);
-          })
-          .subscribe(
-              (quoteIds) -> {
-              },
-              (throwable) -> {
-                throw new RuntimeException(throwable);
-              }
-          );
     }
   }
 

@@ -5,11 +5,21 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:padding="@dimen/basic_margin"
   tools:context=".controller.TypeEditFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content">
+
+        <DatePicker
+          android:id="@+id/date"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:datePickerMode="spinner"
+          android:calendarViewShown="false"
+          android:layout_margin="@dimen/basic_margin"
+          app:layout_constraintTop_toTopOf="parent"/>
 
         <com.google.android.material.textfield.TextInputLayout
           android:id="@+id/mechanic_layout"
@@ -18,7 +28,7 @@
           android:layout_margin="@dimen/half_margin"
           app:hintEnabled="true"
           app:hintAnimationEnabled="true"
-          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/date"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintEnd_toEndOf="parent">
 
@@ -32,27 +42,15 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-          android:id="@+id/type_layout"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          app:hintEnabled="true"
-          app:hintAnimationEnabled="true"
-          android:layout_margin="@dimen/half_margin"
-          app:layout_constraintTop_toBottomOf="@id/mechanic_layout"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintEnd_toEndOf="parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-              android:id="@+id/type_text"
+            <Spinner
+              android:id="@+id/type_spinner"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:inputType="textMultiLine"
-              android:minLines="3"
-              android:maxLines="6"
-              android:hint="@string/type_hint"/>
+              app:layout_constraintTop_toBottomOf="@id/mechanic_layout"
+              app:layout_constraintStart_toStartOf="parent"
+              android:layout_margin="@dimen/basic_margin"/>
 
-        </com.google.android.material.textfield.TextInputLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

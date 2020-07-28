@@ -24,12 +24,10 @@ public class Maintenance {
   @ColumnInfo(name = "mechanic_id", index = true) //TODO update ERD for index
   private Long mechanicId;
 
-  @ColumnInfo(name = "date")
   private Date date;
 
   @NonNull
-  @ColumnInfo(name = "type", collate = ColumnInfo.NOCASE)
-  private String type;
+  private Type type;
 
   public long getId() {
     return id;
@@ -56,28 +54,48 @@ public class Maintenance {
   }
 
   @NonNull
-  public String getType() {
+  public Type getType() {
     return type;
   }
 
-  public void setType(@NonNull String type) {
+  public void setType(@NonNull Type type) {
     this.type = type;
   }
 
   // TODO STRETCH-GOAL If there is enough time implement an enum instead of editable text.
 
-//  public enum Type {
-//    OIL_CHANGE,
-//    TIRE_ROTATE;
-//
-//    @TypeConverter
-//    public static Integer typeToInteger(Type value) {
-//      return (value != null) ? value.ordinal() : null;
-//    }
-//
-//    @TypeConverter
-//    public static Type integerToType(Integer value) {
-//      return (value != null) ? Type.values()[value] : null;
-//    }
-//  }
+  public enum Type {
+    OIL_CHANGE("Oil Change"),
+    TIRE_ROTATE("Tire Rotation"),
+    WIPERS("Wipers"),
+    BRAKES("Brakes");
+
+    private final String name;
+
+    Type(String name) {
+      this.name = name;
+    }
+
+    public String getName() {
+      return name;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+      return name;
+    }
+
+    @TypeConverter
+    public static Integer typeToInteger(Type value) {
+      return (value != null) ? value.ordinal() : null;
+    }
+
+    @TypeConverter
+    public static Type integerToType(Integer value) {
+      return (value != null) ? Type.values()[value] : null;
+    }
+
+
+  }
 }

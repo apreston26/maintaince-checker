@@ -14,7 +14,7 @@ This app would be designed with the sole intent to keep your car up to date from
 
     > As someone who has been ripped off by the mechanic before it's important to me that I am going to the most reliable place in town so that it does not happen again.
 
-## Functionality
+## Functionality Turn this into a paragraph for project introduction/description
 
 * People will put in their location, so the app knows what mechanics are close by 
 
@@ -28,35 +28,37 @@ This app would be designed with the sole intent to keep your car up to date from
 
 * By clicking on the mechanic/mechanic shop it will list reviews. 
 
-## Persistent data
+## Design documentation
 
-* Car maintenance types 
+[Wireframe diagram](wireframe.md)
 
-* Maintenance dates
+[Entity Relationship Diagram](ERD.md)
+
+[Data Definition Language (DDL)](sql/ddl.sql)
     
-## Device/external services
+## Technical Requirements
 
 * Google maps 
 
     * This service will be used in order to locate nearby maintenance shops by showing the address and how far away it is from the phone's current location.
-     
-* [Yelp API](https://www.yelp.com/developers/documentation/v3/get_started)
+    
+* Safe permissions
 
-    * This will be used to show users reviews of maintenance shops to assist deciding which maintenance shop is the safest decision for them. 
+    * Permission to the internet
 
-## Milestone 2 Implementation 
+* Dangerous permissions 
+    
+    * Permission to the user's location
+    
+* Persistent data 
 
-* [Entity Classes](https://github.com/apreston26/maintence-checker/tree/master/app/src/main/java/edu/cnm/deepdive/maintaincechecker/model/entity)
+    * Maintenance types
+    
+    * Maintenance dates
 
-* [DAO Interfaces](https://github.com/apreston26/maintence-checker/tree/master/app/src/main/java/edu/cnm/deepdive/maintaincechecker/model/dao)
+## Implementation Code
 
-* [Pojo Classes](https://github.com/apreston26/maintence-checker/tree/master/app/src/main/java/edu/cnm/deepdive/maintaincechecker/model/pojo)
-
-* [Database/Repository Classes](https://github.com/apreston26/maintence-checker/tree/master/app/src/main/java/edu/cnm/deepdive/maintaincechecker/service)
-
-* [Data Definition Language (DDL)](sql/ddl.sql)
-
-
+To view the code directly please visit our implementation page [here](implementation.md)
 
 ## Stretch goals/possible enhancements 
 
@@ -64,8 +66,20 @@ This app would be designed with the sole intent to keep your car up to date from
 
 * Be able to have an option to schedule a time with the respective mechanic by clicking on them
 
-## Design documentation
+* Adding a spinner for maintenance types
 
-* [Wireframe diagram](wireframe.md)
+## Build Instructions 
 
-* [Entity Relationship Diagram](ERD.md)
+Cloning the repository 
+
+* To clone or download this repository please visit the main github site [here](https://github.com/apreston26/maintence-checker) and find the green code button where there will be the option to `Close with SSH`. If you do not see this option there should instead be an option in the upper right of this dialog box that says `Use SSH`. Once you've located the SSH key there will be a clipboard next to it to copy. Now onto IntelliJ. 
+
+
+
+## Basic User Instructions 
+
+
+
+## Copyrights & Licences 
+
+For information please visit our notice page [here](notice.md). 

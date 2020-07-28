@@ -2,12 +2,9 @@ package edu.cnm.deepdive.maintaincechecker.service;
 
 import android.content.Context;
 import androidx.lifecycle.LiveData;
-import edu.cnm.deepdive.maintaincechecker.model.dao.MaintenanceDao;
 import edu.cnm.deepdive.maintaincechecker.model.dao.MechanicDao;
 import edu.cnm.deepdive.maintaincechecker.model.dao.ReviewDao;
-import edu.cnm.deepdive.maintaincechecker.model.entity.Maintenance;
 import edu.cnm.deepdive.maintaincechecker.model.entity.Review;
-import edu.cnm.deepdive.maintaincechecker.model.pojo.MaintenanceType;
 import edu.cnm.deepdive.maintaincechecker.model.pojo.MechanicWithReviews;
 import io.reactivex.Completable;
 import io.reactivex.Single;

@@ -3,6 +3,7 @@ package edu.cnm.deepdive.maintaincechecker.controller;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import edu.cnm.deepdive.maintaincechecker.R;
@@ -35,11 +36,11 @@ public class MapFragment extends Fragment {
   public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    String myArg = SecondFragmentArgs.fromBundle(getArguments()).getMyArg();
+    String myArg = MapFragmentArgs.fromBundle(getArguments()).getMyArg();
     TextView textView = view.findViewById(R.id.textview_second);
     textView.setText(getString(R.string.hello_second_fragment, myArg));
 
-    view.findViewById(R.id.button_second).setOnClickListener(new View.OnClickListener() {
+    view.findViewById(R.id.button_second).setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
         NavHostFragment.findNavController(MapFragment.this)

@@ -8,27 +8,29 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.maintaincechecker.R;
-import edu.cnm.deepdive.maintaincechecker.model.entity.Maintenance;
-import edu.cnm.deepdive.maintaincechecker.model.pojo.MaintenanceType;
+import edu.cnm.deepdive.maintaincechecker.model.pojo.MaintenanceWithMechanic;
 
 import edu.cnm.deepdive.maintaincechecker.view.MaintenanceAdapter.Holder;
+import java.text.DateFormat;
 import java.util.List;
 
 public class MaintenanceAdapter extends RecyclerView.Adapter<Holder> {
 
   private final String unattributedMechanic;
   private final Context context;
-  private final List<MaintenanceType> types;
+  private final List<MaintenanceWithMechanic> maintenanceHistory;
   private final OnClickListener clickListener;
+  private final DateFormat dateFormat;
 
 
-  public MaintenanceAdapter(Context context, List<MaintenanceType> types,
+  public MaintenanceAdapter(Context context, List<MaintenanceWithMechanic> maintenanceHistory,
       OnClickListener clickListener) {
     super();
     this.context = context;
-    this.types = types;
+    this.maintenanceHistory = maintenanceHistory;
     unattributedMechanic = context.getString(R.string.no_preference_mechanic);
     this.clickListener = clickListener;
+    dateFormat = android.text.format.DateFormat.getDateFormat(context);
   }
 
   @NonNull
@@ -45,7 +47,7 @@ public class MaintenanceAdapter extends RecyclerView.Adapter<Holder> {
 
   @Override
   public int getItemCount() {
-    return types.size();
+    return maintenanceHistory.size();
   }
 
 
@@ -54,19 +56,23 @@ public class MaintenanceAdapter extends RecyclerView.Adapter<Holder> {
     private final View itemView;
     private final TextView type;
     private final TextView mechanic;
+    private final TextView date;
 
     public Holder(@NonNull View itemView) {
       super(itemView);
       this.itemView = itemView;
       type = itemView.findViewById(R.id.type);
       mechanic = itemView.findViewById(R.id.mechanic);
+      date = itemView.findViewById(R.id.date);
     }
 
     private void bind(int position) {
-      MaintenanceType item = (MaintenanceType) types.get(position);
+      MaintenanceWithMechanic item = maintenanceHistory.get(position);
       String mechanicName =
           (item.getMechanic() != null) ? item.getMechanic().getName() : unattributedMechanic;
       mechanic.setText(mechanicName);
+      type.setText(item.getType().toString());
+      date.setText(dateFormat.format(item.getDate()));
       itemView.setOnClickListener((v) -> clickListener.onClick(v, getAdapterPosition(), item));
     }
 
@@ -74,7 +80,7 @@ public class MaintenanceAdapter extends RecyclerView.Adapter<Holder> {
 
   public interface OnClickListener {
 
-    void onClick(View v, int position, MaintenanceType type);
+    void onClick(View v, int position, MaintenanceWithMechanic type);
 
   }
 
