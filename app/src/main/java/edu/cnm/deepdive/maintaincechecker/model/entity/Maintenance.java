@@ -62,13 +62,24 @@ public class Maintenance {
     this.type = type;
   }
 
-  // TODO STRETCH-GOAL If there is enough time implement an enum instead of editable text.
-
   public enum Type {
+    ALIGNMENT("Alignment"),
+    BATTERY("Battery"),
+    BELTS("Belts"),
+    BRAKES("Brakes"),
+    BRAKE_HOSES("Brake Hoses"),
+    BRAKE_PADS("Brake Pads"),
+    EXHAUST("Exhaust"),
+    FUEL_FILTER("Fuel Filter"),
     OIL_CHANGE("Oil Change"),
+    POWER_STEERING("Power Steering"),
+    POWER_STEERING_HOSES("Power Steering Hoses"),
+    SPARK_PLUGS("Spark Plugs"),
+    SUSPENSION("Suspension"),
     TIRE_ROTATE("Tire Rotation"),
-    WIPERS("Wipers"),
-    BRAKES("Brakes");
+    TRANSMISSION("Transmission"),
+    VACUUM_HOSES("Vacuum Hoses"),
+    WIPERS("Wipers");
 
     private final String name;
 

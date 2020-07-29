@@ -1,3 +1,4 @@
+```sqlite
 CREATE TABLE IF NOT EXISTS `Mechanic`
 (
     `mechanic_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -17,3 +18,6 @@ CREATE TABLE IF NOT EXISTS `Maintenance`
 );
 
 CREATE INDEX IF NOT EXISTS `index_Maintenance_mechanic_id` ON `Maintenance` (`mechanic_id`)
+``` 
+
+[Downloadable Version of SQL](ddl.sql)
